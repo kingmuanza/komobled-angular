@@ -1,0 +1,156 @@
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ENEDIART</title>
+        <style>
+            .box_muanza{
+                border : 0px solid rgba(20,20,20, 0.5); 
+                display: none;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .color_muanza{
+                color : rgba(190,190,190, 1); 
+            }
+
+            #nom_utilisateur{
+                color : rgba(190,190,190, 1) !important;
+            }
+
+            .hauteur{
+                height: 45vh;
+                max-height: 50vw;
+            }
+
+            .tr:hover{
+                background-color: #ddd;
+            }
+            .miniature img:hover{
+                transform: scale(0.95);
+            }
+
+            .supprimer:hover{
+                color:#000!important;
+            }
+
+            .nom_restaurant:hover{
+                font-weight: bold;
+            }
+            #logo_competition:hover{
+                cursor: pointer;
+                opacity:0.8;
+            }
+
+        </style>
+
+    </head>
+    <body style="background-color: #fff">
+        <div ng-controller="TestAdminController as controller">
+
+            <div style="width: 100%; padding-top: 80px;">
+                <div class="row">
+                    <div class="col-12" style="border-right: 0px solid #eee; padding: 2vmin 5vmin; padding-left: 7vmin">
+                        <h1 class="africa">
+                            Test de l'équipe : 
+                            {{controller.restaurant.nom ? controller.restaurant.nom:"Nouveau restaurant"}}
+                            <span style="width: 20px;">
+
+                            </span>
+                            <sup style="color:orange" ng-if="controller.chargement" class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </sup>
+                        </h1>
+                        <div>
+                            <a class="text-info" style="font-size: 1.5em" href="#!tests">
+                                Revenir aux tests
+                            </a>
+                        </div>
+
+                        <div style="margin-top: 20px; margin-bottom: 40px;">
+                            <div ng-repeat="point in controller.test.points" style="margin-bottom: 20px;">
+                                <h4>{{point.libelle}}</h4>
+                                <div class="row" style="margin-top: 20px; margin-bottom: 0px;">
+                                    <div class="col-9">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">Commentaire</span>
+                                            </div>
+                                            <textarea ng-model="point.commentaire" class="form-control" aria-label="With textarea"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-3">
+                                        <div class="input-group">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                    Notation
+                                                </span>
+                                            </div>
+                                            <input ng-model="point.note" type="number" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Les plus ! (A séparer avec une virgule)</label>
+                                        <input ng-model="controller.plus" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label>Les moins ! (A séparer avec une virgule)</label>
+                                        <input ng-model="controller.moins" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-4">
+                                    <button ng-click="controller.enregistrer()" id="bouton_autre_photo" class="btn bouton_muanza btn-lg btn-block">
+                                        Enregistrer le test
+                                    </button>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+
+            $(document).ready(function () {
+
+                $('#logo_competition').click(function () {
+                    $('#input_photo').trigger('click');
+                });
+                $('#bouton_autre_photo').click(function () {
+                    $('#input_autre_photo').trigger('click');
+                });
+
+                window.scrollTo(0, 0);
+
+                $("nav").css("background-color", "#333");
+                $("#basdepage").css("padding-top", "60px");
+                console.log("basde page : " + $("#basdepage").css("padding-top"));
+
+                console.log("accounting");
+
+                console.log("La page oeuvre a été chargée");
+                var nboeuvres = Math.floor(Math.random() * 14) + 1;
+                console.log("nboeuvres" + nboeuvres);
+                $('#hautdepage').hide(500, function () {
+                    //afficherLesBlocAvecElegance(0, nboeuvres);
+                });
+
+
+            });
+        </script>
+    </body> 
+</html>
+

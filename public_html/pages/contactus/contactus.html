@@ -1,0 +1,220 @@
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ENEDIART</title>
+        <style>
+            ::placeholder {
+                color: #000 !important;
+            }
+
+            .nopadding {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .komobled {
+                padding-top: 10px; 
+                margin-top: -20vh;
+            }
+            .komobled .inner{
+                margin-bottom: 20px
+            }
+
+            .lien_muanza {
+                cursor: pointer;
+            }
+            .lien_muanza:hover{
+                opacity: 0.7;
+            }
+
+            @media only screen and (max-width: 500px) {
+                .komobled {
+                    padding: 0 !important;
+                    margin: 0 !important;
+                }
+
+                .komobled .inner{
+                    padding: 20px;
+                }
+
+                .lien_muanza {
+                    text-align: center;
+                }
+            }
+
+
+
+        </style>
+
+    </head>
+    <body style="background-color: #fff">
+        <div ng-controller="ContactUsController as controller">
+            <div style="background-color: #eee ;width: 100%; min-height: 35vh; padding: 40px; padding-top: 80px;">
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col-sm-12">
+                        <h1 class="africa" style="">
+                            <b style="font-size: 1.5em">Contacter l'équipe</b>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 100%; margin-top: 0vh; padding: 2vmin 5vmin; padding-left: 7vmin; padding-bottom: 7vmin">
+
+
+                <div class="row" style="padding-top: 25px;">
+
+                    <div class="col-lg-8" style="padding-right: 40px;">
+                        <p class="lead text-justify">
+                            L'équipe komobled, est à votre écoute. Vous pouvez nous contacter par mail ou en utilisant une des options ci-dessous. Nous prendrons connaissance de votre message et y apporterons une réponse si cela est nécessaire.
+
+                        </p>
+                        <ul class="lead">
+                            <li>
+                                Si vous êtes un professionnel possédant un commerce :
+                                <ul>
+                                    <li>
+                                        N'hésitez pas à nous faire part de l'existence de votre commerce à l'aide du formulaire adéquat Nous serions ravis de l'ajouter à note site web.
+                                    </li>
+                                    <li>
+                                        Notre équipe peut vous aider à améliorer votre visibilité sur internet, soit à travers votre site web, soit par la personnalisation de votre page de profil sur Komobled.com.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                Si vous êtes un professionnel possédant un commerce :
+                                <ul>
+                                    <li>
+                                        Vous pouvez nous écrire pour nous dire à peu près tout et n'importe quoi: que ce soit pour nous signaler l'existence d'un commerce, ou simplement pour faire passer des messages à la KomoTeam !
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-lg-4 africa komobled" style=""> 
+                        <div class="inner" style="">
+                            <div class="ombre" style="width: 100%; min-height: 20vh; padding: 30px; background-color: #111;">
+                                <h1>
+                                    <b style="color:orange">KOMOBLED</b>
+                                </h1>
+                                <h4 class="text-white">
+                                    Votre site web, à votre écoute
+                                </h4>
+                                <h4  class="text-white">
+                                    N'hésitez pas à nous contacter!
+                                </h4>                            
+                            </div>
+
+                            <div class="ombre" style="width: 100%; padding: 10px; padding-left: 30px; padding-top: 20px; background-color: orange">
+                                <h4 ng-click="controller.ajouterRestaurant()" class="lien_muanza">Ajouter un restaurant </h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 nopadding">
+                    <div style="margin-bottom: 0px">
+                        <div class="" style="border : 0px solid orange ; width: 100%; height: 30vh; background-color: #111">
+                            <div style="height: 30vh; overflow: hidden; background-image: url('resources/img/bg2.jpg'); background-size: cover">
+
+                            </div>
+                            <div style="margin-top: -30vh; height: 30vh; background-color: rgba(0,0,0,0.8); padding: 30px; padding-left: 60px;">
+                                <h1>
+                                    <b style="color:#60a917">
+                                        SITE WEB 
+                                    </b>
+                                </h1>
+                                <p class="lead" style="font-size: 1.2em; color: white">
+                                    Si vous voulez qu'on améliore votre site web ou qu'on vous en crée un
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="" style="width: 100%; padding: 10px; padding-left: 30px; padding-right:30px; padding-top: 20px; background-color: #60a917">
+                            <h5 class="africa lien_muanza">Améliorez votre site web</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 nopadding">
+                    <div style="margin-bottom: 0px">
+                        <div class="" style="border : 0px solid orange ; width: 100%; height: 30vh; background-color: #111">
+                            <div style="height: 30vh; overflow: hidden; background-image: url('resources/img/restau.jpg'); background-size: cover">
+
+                            </div>
+                            <div style="margin-top: -30vh; height: 30vh; background-color: rgba(0,0,0,0.8); padding: 30px; padding-left: 60px;">
+                                <h1>
+                                    <b style="color:orange">
+                                        OFFICIEL
+                                    </b>
+                                </h1>
+                                <p class="lead" style="font-size: 1.2em; color: white">
+                                    Pour que votre page komobled devienne votre page officielle
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="" style="width: 100%; padding: 10px; padding-left: 30px; padding-right:30px; padding-top: 20px; background-color: orange">
+                            <h5 class="africa lien_muanza">Faites de nous votre page officielle</h5>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 nopadding">
+                    <div style="margin-bottom: 0px">
+                        <div class="" style="border : 0px solid orange ; width: 100%; height: 30vh; background-color: #111">
+                            <div style="height: 30vh; overflow: hidden; background-image: url('resources/img/plat.jpg'); background-size: cover">
+
+                            </div>
+                            <div style="margin-top: -30vh; height: 30vh; background-color: rgba(0,0,0,0.8); padding: 30px; padding-left: 60px;">
+                                <h1>
+                                    <b style="color:#00AFF0">
+                                        CONSEILS 
+                                    </b>
+                                </h1>
+                                <p class="lead" style="font-size: 1.2em; color: white">
+                                    Pour nous dire autre chose
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="" style="width: 100%; padding: 10px; padding-left: 30px; padding-right:30px; padding-top: 20px; background-color: #00AFF0">
+                            <h5 class="africa lien_muanza">Nous sommes à votre écoute</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            $(document).ready(function () {
+                $("nav").css("background-color", "rgba(0,0,0,0.99)");
+                $("nav").addClass("ombre");
+                window.scrollTo(0, 0);
+                document.addEventListener('scroll', function (event) {
+                    var scroll = $("#vue").scrollTop();
+                    //console.log('scrolling ');
+                    $("nav").css("background-color", "rgba(0,0,0,0.99)");
+
+                    clearTimeout($.data(this, 'scrollTimer'));
+
+                    $.data(this, 'scrollTimer', setTimeout(function () {
+                        $("nav").css("background-color", "rgba(0,0,0,0.99)");
+                        //$("nav").removeClass("ombre");
+                        //console.log("Haven't scrolled in 250ms!");
+                    }, 2000));
+                }, true);
+
+
+
+
+
+            });
+        </script>
+    </body> 
+</html>
+

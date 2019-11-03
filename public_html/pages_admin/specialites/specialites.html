@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ENEDIART</title>
+        <style>
+            .box_muanza{
+                border : 0px solid rgba(20,20,20, 0.5); 
+                display: none;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .color_muanza{
+                color : rgba(190,190,190, 1); 
+            }
+
+            #nom_utilisateur{
+                color : rgba(190,190,190, 1) !important;
+            }
+
+            .hauteur{
+                height: 45vh;
+                max-height: 50vw;
+            }
+
+            .tr:hover{
+                background-color: #ddd;
+            }
+            .miniature img:hover{
+                transform: scale(0.95);
+            }
+
+            .supprimer:hover{
+                color:#000!important;
+            }
+
+            .nom_specialite:hover{
+                font-weight: bold;
+            }
+
+        </style>
+
+    </head>
+    <body style="background-color: #fff">
+        <div ng-controller="SpecialitesAdminController as controller">
+            <div ng-style="{'background-image':'url('+controller.backgroundImage+')'}" style="background-position: center center; background-size: 150% auto; width: 100%; height: 25vmin;">
+                
+            </div>
+            <div class="" style="width: 100%; min-height: 25vmin; background-color: rgba(0,0,0,0.7); padding: 5vmin; margin-top: -25vmin">
+                <h1 class="africa display-3" style="color: #fdfdfd; padding-top: 50px;">
+                    Administration
+                </h1>
+            </div>
+            <div style="width: 100%;">
+                <div class="row">
+                    <div class="col-12" style="border-right: 1px solid #eee; padding: 2vmin 5vmin; padding-left: 7vmin">
+                            <h1 class="africa">Liste des spécialités</h1>
+                        <div>
+                            <table id="table_specialites" class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Photo</th>
+                                        <th scope="col">Code</th>
+                                        <th scope="col">Nom</th>
+                                        <th scope="col">Utilisateur</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                </tbody>
+                                
+                            </table>
+                        </div>
+                    </div>
+                    
+                </div>
+
+            </div>
+        </div>
+        
+        <script>
+
+            $(document).ready(function () {
+
+                window.scrollTo(0, 0);
+
+                $("nav").css("background-color", "#333");
+                $("#basdepage").css("padding-top", "60px");
+                console.log("basde page : " + $("#basdepage").css("padding-top"));
+
+                console.log("accounting");
+
+                console.log("La page oeuvre a été chargée");
+                var nboeuvres = Math.floor(Math.random() * 14) + 1;
+                console.log("nboeuvres" + nboeuvres);
+                $('#hautdepage').hide(500, function () {
+                    //afficherLesBlocAvecElegance(0, nboeuvres);
+                });
+
+
+            })
+
+        </script>
+    </body> 
+</html>
+

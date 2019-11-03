@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ENEDIART</title>
+        <style>
+            .box_muanza{
+                border : 0px solid rgba(20,20,20, 0.5); 
+                display: none;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .color_muanza{
+                color : rgba(190,190,190, 1); 
+            }
+
+            #nom_utilisateur{
+                color : rgba(190,190,190, 1) !important;
+            }
+
+            .hauteur{
+                height: 45vh;
+                max-height: 50vw;
+            }
+
+            .tr:hover{
+                background-color: #ddd;
+            }
+            .miniature img:hover{
+                transform: scale(0.95);
+            }
+
+            .supprimer:hover{
+                color:#000!important;
+            }
+
+            .nom_restaurant:hover{
+                font-weight: bold;
+            }
+
+            .titre_accueil{
+                font-size: 3em; 
+                display: none;
+            }
+            .padding_bloc{
+                padding-left: 5vw; 
+                padding-right: 6vw; 
+                padding-top: 10vh; 
+                padding-bottom: 5vh;
+            }
+
+            @media only screen and (max-width: 500px) {
+
+                .titre_accueil{
+                    font-size: 2.2em; 
+                }
+
+                .padding_bloc{
+                    padding-left: 5vw; 
+                    padding-right: 6vw; 
+                    padding-top: 10vh; 
+                    padding-bottom: 5vh;
+                }
+
+            }
+
+        </style>
+
+    </head>
+    <body style="background-color: #fff">
+        <div ng-controller="RestaurantsController as controller">
+            <div>
+                <div style="background-image: url('resources/img/bg2.jpg') ; background-size: cover; color:#fff; background-color: #000; overflow: hidden">
+                    <div style="width: 100%; background-color: rgba(0, 0, 0, 0.8);">
+                        <div class="padding_bloc" style="">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <h2 class="africa titre_accueil" style="color:#fff; font-weight: bold;">
+                                        Trouver un restaurant
+                                        <span style="display: none" id="test"></span>
+                                    </h2>
+                                </div>
+                            </div>
+                            <div class="row" style="padding-top: 20px;">
+                                <div class="col-lg-3">
+                                    <div class="input-group input-group-lg" style="margin-bottom: 10px;">
+                                        <input 
+                                            ng-keyup="controller.rechercher()"
+                                            ng-model="controller.pays"
+                                            style="border-color: orange; border-width: 3px; background-color: rgba(255,255,255,0.1); color: #fff" 
+                                            type="text" class="form-control" placeholder="Pays">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="input-group input-group-lg" style="margin-bottom: 10px;">
+                                        <input 
+                                            ng-keyup="controller.rechercher()"
+                                            ng-model="controller.departement"
+                                            style="border-color: orange; border-width: 3px; background-color: rgba(255,255,255,0.1); color: #fff" 
+                                            type="text" class="form-control" placeholder="Département">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="input-group input-group-lg" style="margin-bottom: 10px;">
+                                        <input 
+                                            ng-keyup="controller.rechercher()"
+                                            ng-model="controller.specialites"
+                                            style="border-color: orange; border-width: 3px; background-color: rgba(255,255,255,0.1); color: #fff" 
+                                            type="text" class="form-control" placeholder="Spécialités">
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <div class="input-group input-group-lg" style="margin-bottom: 10px;">
+                                        <input 
+                                            ng-keyup="controller.rechercher()"
+                                            ng-model="controller.nom"
+                                            style="border-color: orange; border-width: 3px; background-color: rgba(255,255,255,0.1); color: #fff" 
+                                            type="text" class="form-control" placeholder="Nom du restaurant">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%; padding-left: 5vw; padding-right: 6vw; padding-top: 5vh; padding-bottom: 5vh">
+                <div class="row">
+                    <div class="col-lg-4" style="margin-bottom: 20px;" ng-repeat="restaurant in controller.restaurants">
+                        <div ng-click="controller.ouvrir(restaurant)" style="cursor: pointer; width: 100%; height: 70vh" class="ombre">
+                            <div ng-style="{'background-image': 'url('+ controller.getPhoto(restaurant)+')'}" style="width: 100%; height: 40vh; background-size: cover;">
+
+                            </div>
+                            <div style="padding: 2vmax; padding-top: 2vmin;">
+                                <h4 style="margin-top: 0px;">
+                                    {{controller.utf8(restaurant.name)}}
+                                </h4>
+                                <div style="margin-top: -10px; text-overflow: ellipsis; overflow:hidden; white-space:nowrap">
+                                    <a href="{{restaurant.lien}}" style="color:blue">
+                                        {{restaurant.lien=='none' ? 'Aucun lien': restaurant.lien}}   
+                                    </a>
+                                </div>
+                                <div style="margin-top: -5px;">
+                                    <span>
+                                        Tarif : 
+                                    </span>
+                                    {{restaurant.tarif}}
+                                </div>
+                                <div style="margin-top: 0px;">
+                                    <b style="color:orange">
+                                        <notation note="restaurant.note_usr_avg"></notation>
+                                    </b>
+                                </div>
+
+                                <div style="position: absolute; bottom: 0; width: 100%; left: 0; padding: 2vmax; padding-left: 3vmax; padding-right: 3vmax">
+                                    <small style="color:#aaa">
+                                        Aujourd'hui
+                                    </small>
+                                    <small style="float: right">
+                                        {{restaurant.schedule.today}}
+                                        
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function () {
+                document.addEventListener('scroll', function (event) {
+                    var scroll = document.body.scrollTop
+                    //console.log('scrolling : ' + scroll);
+                    $("nav").css("background-color", "rgba(0,0,0,0.95)");
+                    $("nav").addClass("ombre");
+
+                    clearTimeout($.data(this, 'scrollTimer'));
+
+                    $.data(this, 'scrollTimer', setTimeout(function () {
+                        if (scroll === 0) {
+                            $("nav").css("background-color", "rgba(0,0,0,0.0)");
+                            $("nav").removeClass("ombre");
+                        }
+
+                        //console.log("Haven't scrolled in 250ms!");
+                    }, 1000));
+                }, true);
+
+                $(document).scroll(function () {
+
+                });
+            });
+
+        </script>
+    </body> 
+</html>
+

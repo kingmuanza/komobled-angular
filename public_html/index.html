@@ -1,0 +1,214 @@
+<html>
+    <head>
+        <title>KOMOBLED</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+        <link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light|Thasadith" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merienda+One&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+        <link href="resources/css/komobled.css" rel="stylesheet" type="text/css"/>
+        <style>
+            .navbar-toggler{
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body ng-app="myApp" style="overflow-x: hidden;">
+
+        <!-- Barre de navigation -->
+        <nav ng-controller="MenuController as controller" id="bar_nav" role="navigation" style="width: 100%; opacity: 1; background-color: rgba(0,0,0,0.01); z-index: 2!important" class="fixed-top navbar navbar-expand-lg flex-column flex-md-row bd-navbar navbar-success ">
+
+
+            <!--Logo de l'application--> 
+            <a class="navbar-brand text-white mr-auto" href="#" style="padding-right: 10px; margin-bottom: 0px; max-width: 200px">
+                <b style="margin-top: 5px; color: orange; opacity: 0.95">KOMOBLED</b>
+            </a>
+            <a class="navbar-toggler ml-auto" style="max-width: 100px; margin-top: -35px;" data-toggle="collapse" data-target="#navbarTogglerGauche" aria-controls="navbarTogglerGauche" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars" style="color:#fff"></i>
+            </a>
+
+
+            <div class="collapse navbar-collapse" id="navbarTogglerGauche">
+                <!-- Partie gauche du menu -->
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a id="oeuvres" class="nav-link text-white" href="#!restaurants">
+                            Trouver un restaurant africain
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="contactus" class="nav-link text-white" href="#!contactus">Nous contacter</a>
+                    </li>
+                    <li ng-if="controller.utilisateur" class="nav-item dropdown" style="cursor: pointer;">
+                        <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span>
+                                {{controller.utilisateur.nom}}
+                            </span>
+                        </a>
+                        <div style="float: left" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                            <a class="dropdown-item" ng-click="controller.mesRestaurants()">
+                                <i class="fas fa-store"></i>
+                                <span style="padding-left: 10px;">Mes restaurants</span>
+
+                            </a>
+                            <a class="dropdown-item" ng-click="controller.deconnexion()">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span style="padding-left: 10px;">Déconnexion</span>
+
+                            </a>
+                        </div>
+                    </li>
+                    <li ng-if="!controller.utilisateur" class="nav-item">
+                        <a class="nav-link text-white" href="#!connexion">
+                            Connexion
+                        </a>
+                    </li>
+                    <li class="nav-item" style="width: 20px">
+
+                    </li>
+                </ul>
+            </div>
+
+
+        </nav>
+
+        <div style="min-height: 100vh;">
+            <div ng-view>
+
+            </div>
+        </div>
+
+
+        <!-- Footer -->
+        <div id="basdepage" style="background-color: #000; color: #fff; padding-bottom : 10vmin; padding-top : 10vmin; " >
+            <div style="padding-left: 4vw; padding-right: 2vw;">
+                <div class="row">
+                    <div class="col-4">
+                        <span style="color: #aaa">
+                            <b style="color: #fff">© 2018 KOMOBLED</b> <br>
+                            Tous droits réservés
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <b>KOMOBLED</b>
+                        <ul class="list-unstyled" style="color: #aaa">
+                            <li>Comment ça marche?</li>
+                            <li><a href="#!mentions">Mentions légales</a></li>
+                            <li>Contactez-nous</li>
+                            <li>A propos</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-3">
+                        <b>RESEAUX SOCIAUX</b>
+                        <ul class="list-unstyled" style="color: #aaa">
+                            <li>Facebook</li>
+                            <li>Instagram</li>
+                            <li>Twitter</li>
+                            <li>Google +</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <!-- Script par odre de priorité -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+
+        <!-- DATATABLES : Affichage des données -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+
+        <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
+
+        <!-- Transformer les nombres en monnaie -->
+        <script src="resources/js/accounting.js" type="text/javascript"></script>
+
+        <!-- Custom script -->
+        <script src="resources/js/bashenga.js" type="text/javascript"></script>
+        <script src="resources/js/angular.min.js" type="text/javascript"></script>
+        <script src="resources/js/angular-route.js" type="text/javascript"></script>
+
+        <!-- Déclaration de l'application sur Angular -->
+        <script src="app.js" type="text/javascript"></script>
+
+        <!-- routage -->
+        <script src="routage/routage.js" type="text/javascript"></script>
+
+        <!-- Firebase Database -->
+        <script src="services/database.js" type="text/javascript"></script>
+        <!-- Firebase Storage --> 
+        <script src="services/storage.js" type="text/javascript"></script>
+        <!-- Firebase Authentification -->
+        <script src="services/authentification.js" type="text/javascript"></script>
+        <!-- Fonctions utiles en Angular : Formatage, heure -->
+        <script src="services/util.js" type="text/javascript"></script>
+
+        <!-- Gestion du menu -->
+        <script src="menu.js" type="text/javascript"></script>
+
+        <!-- Controllers pour les pages accessibles à tous -->
+        <script src="pages/accueil/accueil.js" type="text/javascript"></script>
+        <script src="pages/restaurants/restaurants.js" type="text/javascript"></script>
+        <script src="pages/restaurant/restaurant.js" type="text/javascript"></script>
+        <script src="pages/connexion/connexion.js" type="text/javascript"></script>
+        <script src="pages/contactus/contactus.js" type="text/javascript"></script>
+        <script src="pages/mesrestaurants/restaurants.js" type="text/javascript"></script>
+        <script src="pages/monrestaurant/restaurant.js" type="text/javascript"></script>
+        <script src="pages/notation/notation.js" type="text/javascript"></script>
+
+
+        <!-- Components -->
+        <script src="components/notation/notation.js" type="text/javascript"></script>
+
+
+        <script>
+
+                        $(document).ready(function () {
+
+                            $('nav .nav-item:not(.dropdown)').on('click', function () {
+                                console.log("nav .nav-item:not(.dropdown)")
+                                $('.navbar-toggler').click(); //bootstrap 4.x
+                            });
+                            $('a.dropdown-item').on('click', function () {
+                                console.log(".dropdown-item")
+                                $('.navbar-toggler').click(); //bootstrap 4.x
+                            });
+
+                        });
+
+
+        </script>
+
+
+
+
+    </body>
+</html>

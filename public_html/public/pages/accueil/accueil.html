@@ -1,0 +1,351 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ENEDIART</title>
+        <style>
+
+            .color_muanza{
+                color : gray; 
+            }
+
+            #accueil{
+                color : rgba(255,255,255, 0.85) !important;
+            }
+        </style>
+        <style>
+            @media only screen and (max-width: 768px) {
+                .lead {
+                    font-size: 1.3em
+                }
+            }
+
+            .titre_accueil{
+                font-size: 4em; 
+            }
+
+            .padding_newsLetter {
+                padding: 15vmin; 
+                padding-left: 20vmin; 
+                padding-right: 20vmin;
+            }
+
+            .text_newsLetter{
+                font-size: 1.8em; 
+                color:#fefefe; 
+                padding-left: 10vmin; 
+                padding-right: 10vmin
+            }
+
+            .padding_input_newsLetter {
+                padding-left: 20vmin; 
+                padding-right: 20vmin; 
+                padding-top: 30px;
+            }
+
+            .box_recherche_input{
+                padding-left: 30vw; 
+                padding-right: 30vw;
+            }
+            .arriere_plan {
+                background-size: 100% auto; 
+            }
+
+            @media only screen and (max-width: 500px) {
+                p.lead {
+                    font-size: 4.3em;
+                }
+
+                .titre_accueil {
+                    font-size: 2.2em;
+                }
+                .box_recherche_input{
+                    padding-left: 10vw; 
+                    padding-right: 10vw;
+                }
+                .arriere_plan {
+                    background-size: cover; 
+                }
+
+                .padding_newsLetter {
+                    padding: 0;
+                }
+
+                .text_newsLetter{
+                    font-size: 1.2em; 
+                    color:#fefefe; 
+                    padding-left: 2vmin; 
+                    padding-right: 2vmin
+                }
+
+                .padding_input_newsLetter {
+                    padding-left: 2vmin; 
+                    padding-right: 2vmin; 
+                    padding-top: 10px;
+                }
+
+
+
+            }
+        </style>
+    </head>
+    <body >
+        <div id="contenuPage" ng-controller="AccueilController as controller">
+            <div id="hautdepage" >
+                <div class="" style="border-bottom: 0px solid #333; height: 100vh; color:#fff; background-color: #000; overflow: hidden">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <div class="arriere_plan" style="background-image: url('resources/img/bg2.jpg') ; filter: blur(4px); width: 100%; height: 100vh; background-position: center center ; ">
+
+                                </div>
+                                <div style="padding: 2vw ; padding-left: 3vw ; position: absolute; margin-top: -100vh;width: 100%; height: 100vh; background-color: rgba(0, 0, 0, 0.4);">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h1 class="titre_accueil" style="padding-left: 15vw; padding-right: 15vw; padding-top: 25vh; color:#fff; font-weight: bold; text-align: center">
+                                                Les restaurants africains avec les meilleurs avis 
+                                                <span style="display: none" id="test"></span>
+                                            </h1>
+                                            <div class="box_recherche_input" style="padding-top: 20px;">
+                                                <div class="input-group input-group-lg">
+                                                    <input 
+                                                        ng-model="controller.recherche"
+                                                        ng-keyup="controller.rechercher()"
+                                                        style="text-align: center; border-color: orange; border-width: 3px; background-color: rgba(255,255,255,0.1); color: #fff" 
+                                                        type="text" class="form-control" placeholder="Rechercher un restaurant">
+                                                </div>
+
+                                                <div style="text-align:center; margin-top: 10px;">
+                                                    <div ng-click="controller.ouvrirRestaurant(restaurant)" ng-repeat="restaurant in controller.resultats | limitTo:3" class="africa" style="color:#fff; font-size: 1.5em; cursor: pointer">
+                                                        {{restaurant.nom}}
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+            <div style="min-height: 100vh;  width: 100% ; background-color: #fff; margin-top: 0vmin">
+                <div style="background-color: #fff" class="">
+                    <div style="padding-bottom: 40px; ">
+                        <div class="contenu" style="padding-top: 40px; ">
+                            <div style="padding-top: 0px;">
+                                <h1 class="display-4 africa">
+                                    Les saveurs de chez vous !
+                                </h1>
+                                <p class="lead" style="font-size: 130%;"> 
+                                    La cuisine africaine est tout aussi riche que la culture africaine. 
+                                    Elle regorge de mets, aussi succulents les uns que les autres.
+                                    Loin de chez nous, nous ressentons la nostalgie de cette cuisine fabuleuse.
+                                    KOMOBLED vous propose des lieux qui vous feront ressentir les saveurs du pays.
+                                    Même loin, vous consommerez toujours votre culture.
+                                </p>
+                            </div>
+                            <div style="padding-top: 10px;">
+                                <div class="row">
+                                    <div style="cursor: pointer" ng-click="controller.ouvrirSpecialite(specialite)" ng-repeat="specialite in controller.specialites  | limitTo:3" class="col-sm-4">
+                                        <div class="h30">
+                                            <img ng-src="{{specialite.photo}}" style="width: 100%" alt=""/>
+                                        </div>
+                                        <h5 class="africa" style="text-align: center; padding-top: 5px; padding-bottom: 5px; background-color: #eee">
+                                            {{specialite.nom}}
+                                        </h5>
+                                    </div>
+                                </div>
+                                <div style="padding-top: 10px;">
+                                    <span onclick="window.location.href = '#!/oeuvres'" class="manuscrit-nopadding desssus" style="font-size: 1.8em; cursor: pointer">
+                                        Voir plus de spécialités
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background-color: #eee; min-height: 80vh" class="">
+                    <div style="padding-bottom: 40px; ">
+                        <div class="contenu" style="padding-top: 40px;">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="lead" style="font-size: 1.2em;"> 
+                                        Nous vous recommandons ce plat
+                                    </div>
+                                    <h1 class="titre_accueil africa">
+                                        Le sauté de Maman Chantal !!!!
+                                    </h1>
+                                </div>
+                            </div>
+                            <div style="padding-top: 20px;">
+                                <div class="row">
+                                    <div class="col-sm-8" style="padding-bottom: 10px;">
+                                        <div>
+                                            <img style="width: 100%;" src="resources/img/plat3.png" alt=""/>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <p class="lead" style="font-size: 130%;">
+                                            Le sauté de Maman Chantal est un plat à base de riz longs grains et de spaghetti.
+                                            Il se consomme avec une sauce légèrement épicée, à base de légumes verts.
+                                        </p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="padding-top: 20px;">
+                                <span onclick="window.location.href = '#!/oeuvres'" class="manuscrit-nopadding desssus" style="font-size: 1.8em; cursor: pointer">
+                                    Découvrir d'autres plats
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="filter: blur(0px); width: 100%; height: 110vh; background-attachment: fixed;background-size: cover ;  background-image: url('resources/img/plat4.png')">
+
+                </div>
+
+
+                <div class="contenu" style="padding-top: 40px;">
+                    <div style="padding-top: 0px;">
+                        <h1 class="display-4 africa" style="text-align: center">
+                            Les tests de l'équipe
+                        </h1>
+                        <p class="lead" style="text-align: center; font-size: 130%;"> 
+                            Nous avons testé ces restaurants rien que pour vous 
+                        </p>
+
+                    </div>
+                    <div style=" padding: 10px;">
+                        <div class="row">
+                            <div ng-click="controller.ouvrirRestaurant(restaurant)" ng-repeat="restaurant in controller.restaurants  | limitTo:3 track by $index" style="margin-bottom: 10px; cursor: pointer" ng-class="{'col-sm-12': $index == 2 , 'col-sm-6': $index == 0 || $index == 1  }">
+                                <div class="h50" style="background-size: cover" ng-style="{'background-image': 'url('+ controller.getPhoto(restaurant)+')'}">
+                                </div>
+                                <h5 class="africa" style="text-align: center; padding-top: 5px; padding-bottom: 5px; background-color: #eee">
+                                    {{controller.utf8(restaurant.name)}}
+                                </h5>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div style="padding-top: 0px; padding-bottom: 40px; text-align: center">
+                        <span onclick="window.location.href = '#!/restaurants'" class="manuscrit-nopadding desssus" style="font-size: 1.8em; cursor: pointer">
+                            Découvrir d'autres restaurants
+                        </span>
+                    </div>
+                </div>
+
+                <div class="contenu" style="background-color: #333; width: 100%; padding-top: 5vh; padding-bottom: 10vh;">
+                    <h1 class="text-white" style="text-align: center; font-size: 3em;">
+                        On est ensemble !!!
+                    </h1>
+                    <div class="row" style="padding-top: 20px;">
+                        <div class="col-sm-4">
+                            <div ng-click="controller.mesRestaurants()" style="height: 40vh; border: 2px solid #fff; padding: 20px; margin-bottom: 20px; cursor: pointer">
+                                <h4 class="text-white" style="height: 60px; overflow: hidden">
+                                    Proposer un commerce africain
+                                </h4>
+                                <h1 style="font-size: 5.5em; color: #fff; text-align: center; padding-top: 10px;">
+                                    <i class="fas fa-store"></i>
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div style="height: 40vh; border: 2px solid #fff; padding: 20px; margin-bottom: 20px; cursor: pointer">
+                                <h4 class="text-white" style="height: 60px; overflow: hidden">
+                                    Devenir partenaire
+                                </h4>
+                                <h1 style="font-size: 5.5em; color: #fff; text-align: center; padding-top: 10px;">
+                                    <i class="fas fa-hands-helping"></i>
+                                </h1>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div ng-click="controller.nousContacter()" style="height: 40vh; border: 2px solid #fff; padding: 20px; margin-bottom: 20px; cursor: pointer">
+                                <h4 class="text-white" style="height: 60px; overflow: hidden">
+                                    Nous contacter
+                                </h4>
+                                <h1 style="font-size: 5.5em; color: #fff; text-align: center; padding-top: 10px;">
+                                    <i class="fas fa-mail-bulk"></i>
+                                </h1>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+
+                <div>
+
+                </div>
+
+                <div style="background-color: #fff; width: 100%; background-attachment: fixed;background-size: 100% auto ;  ackground-image: url('https://firebasestorage.googleapis.com/v0/b/coworking-muanza.appspot.com/o/27.jfif?alt=media&token=88af0b2b-64a2-4066-b9bd-0cb652b990a7')">
+                    <div class="padding_newsLetter" style="">
+                        <div style="border-radius: 0px; padding-bottom:7vmin; background-color: orange; border: 0px solid white">
+                            <div style="text-align: center; padding: 5vmin">
+                                <h1 class="africa text-white titre_accueil">
+                                    {{controller.titre}}
+                                </h1>
+                                <p class="text_newsLetter" style="">
+                                    {{controller.soustitre}}
+                                </p>
+                                <div ng-if="controller.nonInscrit" class="padding_input_newsLetter" style="">
+                                    <div class="input-group input-group-lg">
+                                        <input ng-model="controller.email" style="text-align: center;" type="email" class="form-control africa" placeholder="Votre adresse mail">
+
+                                    </div>
+                                    <button ng-click="controller.ajouterMail(controller.email)" class="btn btn-outline-light" style="margin-top: 20px;">
+                                        <b style="font-size: 1.2em;">INSCRIVEZ-VOUS !</b>
+                                    </button>
+                                </div>
+                                <div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            $(document).ready(function () {
+                document.addEventListener('scroll', function (event) {
+                    var scroll = document.body.scrollTop
+                    // console.log('scrolling : ' + scroll);
+                    $("nav").css("background-color", "rgba(0,0,0,0.95)");
+                    $("nav").addClass("ombre");
+
+                    clearTimeout($.data(this, 'scrollTimer'));
+
+                    $.data(this, 'scrollTimer', setTimeout(function () {
+                        if (scroll === 0) {
+                            $("nav").css("background-color", "rgba(0,0,0,0.0)");
+                            $("nav").removeClass("ombre");
+                        }
+
+                        //console.log("Haven't scrolled in 250ms!");
+                    }, 1000));
+                }, true);
+
+                $(document).scroll(function () {
+
+                });
+            });
+
+        </script>
+    </body> 
+</html>
+

@@ -1,0 +1,182 @@
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ENEDIART</title>
+        <style>
+            ::placeholder {
+                color: #000 !important;
+            }
+
+
+
+        </style>
+
+    </head>
+    <body style="background-color: #fff">
+        <div ng-controller="ConnexionController as controller">
+            <div style="background-color: #fafafa ;width: 100%; min-height: 20vh; padding: 40px; padding-top: 80px;">
+                <div class="row" style="padding-top: 20px;">
+                    <div class="col-sm-2">
+
+                    </div>
+                    <div class="col-sm-3" style="margin-bottom: 10px;">
+                        <div class="input-group input-group-lg">
+                            <input 
+                                ng-model="controller.login"
+                                style="border-color: orange; border-width: 3px; background-color: rgba(255,255,255,0.1); color: #444" 
+                                type="text" class="form-control" placeholder="Adresse mail">
+                        </div>
+                    </div>
+                    <div class="col-sm-3" style="margin-bottom: 10px;">
+                        <div class="input-group input-group-lg">
+                            <input 
+                                ng-model="controller.passe"
+                                style="border-color: orange; border-width: 3px; background-color: rgba(255,255,255,0.1); color: #444" 
+                                type="password" class="form-control" placeholder="Mot de passe">
+                        </div>
+                    </div>
+                    <div class="col-sm-2" style="margin-bottom: 10px;">
+                        <div class="input-group input-group-lg">
+                            <input 
+                                ng-click="controller.connexion()"
+                                value="Connexion"
+                                style="font-weight: bold; padding-top: 5px; border-color: #000; border-width: 3px; background-color: rgba(0,0,0,0.95); color: orange" 
+                                type="submit" class="form-control africa">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 100%; padding: 2vmin 5vmin; padding-left: 7vmin; padding-bottom: 7vmin">
+
+
+                <div class="row" style="padding-top: 50px;">
+                    <div class="col-lg-6" style="padding-right: 40px; margin-bottom: 20px;">
+                        <h1 class="africa">
+                            Rejoignez-nous !
+                        </h1>
+                        <p class="text-justify">
+                            <span class="lead">
+                                Envie de vous enjailler, de manger ou de vous coiffer comme au bled? 
+                                Vous êtes au bon endroit. 
+                                A travers ses différentes rubriques
+                            </span>
+                            <b style="font-weight: bolder; font-size: 1.3em; color: orange">komobled.com</b> 
+                            <span class="lead">
+                                vous guide pour trouver les bons coins. 
+                                Bienvenue dans la bledosphère!
+                                Crééz un compte afin de profiter de tous nos services et des dernières actualités.
+                            </span>
+                        </p>
+                    </div>
+                    <div class="col-lg-6" style="">
+                        <div class="ombre" style="background-color: #fdfdfd; width: 100%; min-height: 20vh; border: 2px solid orange; border-radius: 10px; padding: 20px;">
+
+                            <h2 class="africa">
+                                Créer un compte
+                            </h2>
+                            <hr>
+
+                            <div>
+                                <div class="form-group">
+                                    <label class="africa" style="font-size: 1.2em">Nom utilisateur</label>
+                                    <input ng-model="controller.nom" class="form-control">
+                                    <small class="form-text text-muted">
+                                        Ce nom sera visible par tous les utilisateurs de KOMOBLED.COM
+                                    </small>
+                                </div>
+                                <div class="form-group">
+                                    <label class="africa" style="font-size: 1.2em">Votre adresse mail</label>
+                                    <input ng-model="controller.email" class="form-control">
+                                    <small class="form-text text-muted">
+                                        Vous recevrez un email de confirmation
+                                    </small>
+                                </div>
+                                <div class="form-group">
+                                    <label class="africa" style="font-size: 1.2em">Votre date de naissance</label>
+                                    <input ng-model="controller.datenaiss" type="date" class="form-control">
+                                    <small class="form-text text-muted">
+                                        Ne serez visible que par vous
+                                    </small>
+                                </div>
+                                <div>
+                                    <label class="africa" style="font-size: 1.2em; padding-right: 20px;">
+                                        Vous êtes : 
+                                    </label>
+                                    <div class="form-check form-check-inline">
+                                        <input ng-model="controller.sexe" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Homme">
+                                        <label class="form-check-label" for="inlineRadio1">
+                                            Homme
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input ng-model="controller.sexe" class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Femme">
+                                        <label class="form-check-label" for="inlineRadio2">
+                                            Femme
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="africa" style="font-size: 1.2em">Mot de passe</label>
+                                    <input ng-model="controller.password" autocomplete="off" type="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+                                    <label class="africa" style="font-size: 1.2em">Confirmer votre mot de passe</label>
+                                    <input ng-model="controller.confirmpasse" type="password" class="form-control">
+                                </div>
+                                <div style="padding: 20px; text-align: center; padding-top: 0px; padding-bottom: 0px;">
+                                    <a href = "#!conditions" target = "_blank">En vous inscrivant vous reconnaissez avoir lu les Conditions g&eacute;n&eacute;rales d'utilisation (Cliquez pour voir)</a>
+                                </div>
+                                <div class="form-check" style="text-align: center">
+                                    <input ng-model="controller.cgu" class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        J'ai lu les CGU.
+                                    </label>
+                                </div>
+                                <div style="padding-top: 20px; color:red; text-align: center">
+                                    
+                                    {{controller.message}}
+                                </div>
+                                <div style="padding-top: 5px">
+                                    <button ng-if="controller.cgu" ng-click="controller.inscription()" id="bouton_autre_photo" class="btn bouton_muanza btn-lg btn-block">
+                                        S'inscrire
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <script>
+
+            $(document).ready(function () {
+                $("nav").css("background-color", "rgba(0,0,0,0.99)");
+                $("nav").addClass("ombre");
+                window.scrollTo(0, 0);
+                document.addEventListener('scroll', function (event) {
+                    var scroll = $("#vue").scrollTop();
+                    //console.log('scrolling ');
+                    $("nav").css("background-color", "rgba(0,0,0,0.99)");
+
+                    clearTimeout($.data(this, 'scrollTimer'));
+
+                    $.data(this, 'scrollTimer', setTimeout(function () {
+                        $("nav").css("background-color", "rgba(0,0,0,0.99)");
+                        //$("nav").removeClass("ombre");
+                        //console.log("Haven't scrolled in 250ms!");
+                    }, 2000));
+                }, true);
+
+
+
+
+
+            });
+        </script>
+    </body> 
+</html>
+

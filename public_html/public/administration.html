@@ -1,0 +1,209 @@
+<html>
+    <head>
+        <title>KOMOBLED</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
+        <link href="//fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Shadows+Into+Light|Thasadith" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Merienda+One&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+
+        <link href="resources/css/komobled.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body ng-app="myApp" style="overflow-x: hidden;">
+
+        <!-- Barre de navigation -->
+        <nav ng-controller="MenuController as controller" id="bar_nav" role="navigation" style=" opacity: 1; background-color: rgba(0,0,0,1); z-index: 2!important" class="fixed-top navbar navbar-expand-lg flex-column flex-md-row bd-navbar navbar-success ">
+
+            <!-- Logo de l'application -->
+            <a class="navbar-brand text-white" href="index.html" target="_BLANK" style="margin-top: -3px; margin-bottom: 0px;">
+                <b style="margin-top: 5px; color: orange; opacity: 0.95">KOMOBLED</b>
+                <!-- img style="height: 60px; filter: grayscale(90%); opacity: 0.9" src="resources/img/img.png" alt=""/ -->
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerGauche" aria-controls="navbarTogglerGauche" aria-expanded="false" aria-label="Toggle navigation">
+                <i class="fas fa-bars" style="font-size: 2.0em;color:#fff"></i>
+            </button>
+
+            <!-- Partie gauche du menu -->
+            <div class="collapse navbar-collapse" id="navbarTogglerGauche">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item">
+                        <a id="specialites" class="nav-link text-white" href="#!specialites">
+                            Spécialités
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="restaurants" class="nav-link text-white" href="#!restaurants">
+                            Restaurants
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a id="tests" class="nav-link text-white" href="#!tests">
+                            Tests de l'équipe
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Partie droite du menu -->
+            <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex" style="float: right">
+                <li class="nav-item dropdown" style="cursor: pointer;">
+                    <a class="nav-link dropdown-toggle text-white" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>
+                            XAF
+                        </span>
+                    </a>
+                    <div style="float: left" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown2">
+                        <a class="dropdown-item">
+                            <i style="width: 50px" class="fas fa-euro-sign"></i>
+                            <span style="float: right">Euro</span>
+                        </a>
+                        <a class="dropdown-item">
+                            <b style="width: 50px">XAF</b> 
+                            <span style="float: right">Franc CFA</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown" style="cursor: pointer;">
+                    <a class="nav-link dropdown-toggle text-white" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>
+                            Muanza Kangudie
+                        </span>
+                    </a>
+                    <div style="float: left" class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#!panier">
+                            <i class="fas fa-shopping-cart"></i> 
+                            <span style="padding-left: 10px;">Mon panier</span>
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" ng-click="controller.deconnexion()">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span style="padding-left: 10px;">Déconnexion</span>
+
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="connexion.html">
+                        Connexion
+                    </a>
+                </li>
+                <li class="nav-item" style="width: 20px">
+
+                </li>
+            </ul>
+        </nav>
+
+        <div style="min-height: 100vh;">
+            <div ng-view>
+
+            </div>
+        </div>
+
+
+        <!-- Footer -->
+        <div id="basdepage" style="background-color: #000; color: #fff; padding-bottom : 10vmin; padding-top : 10vmin; " >
+            <div style="padding-left: 2vw; padding-right: 2vw;">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <span style="color: #aaa">
+                            <b style="color: #fff">© 2018 KOMOBLED</b> <br>
+                            Tous droits réservés
+                        </span>
+                    </div>
+                    <div class="col-sm-3">
+                        <b>KOMOBLED</b>
+                        <ul class="list-unstyled" style="color: #aaa">
+                            <li>Comment ça marche?</li>
+                            <li><a href="#!mentions">Mentions légales</a></li>
+                            <li>Contactez-nous</li>
+                            <li>A propos</li>
+                        </ul>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <b>RESEAUX SOCIAUX</b>
+                        <ul class="list-unstyled" style="color: #aaa">
+                            <li>Facebook</li>
+                            <li>Instagram</li>
+                            <li>Twitter</li>
+                            <li>Google +</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+        <!-- Script par odre de priorité -->
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.5.3/firebase.js"></script>
+
+        <!-- DATATABLES : Affichage des données -->
+        <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.flash.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.html5.min.js"></script>
+        <script src="https://cdn.datatables.net/buttons/1.5.6/js/buttons.print.min.js"></script>
+
+
+        <!-- Transformer les nombres en monnaie -->
+        <script src="resources/js/accounting.js" type="text/javascript"></script>
+
+        <!-- Custom script -->
+        <script src="resources/js/bashenga.js" type="text/javascript"></script>
+        <script src="resources/js/angular.min.js" type="text/javascript"></script>
+        <script src="resources/js/angular-route.js" type="text/javascript"></script>
+
+        <!-- Déclaration de l'application sur Angular -->
+        <script src="app.js" type="text/javascript"></script>
+
+        <!-- routage -->
+        <script src="routage/routage_admin.js" type="text/javascript"></script>
+        
+        <!-- Firebase Database -->
+        <script src="services/database.js" type="text/javascript"></script>
+        <!-- Firebase Storage --> 
+        <script src="services/storage.js" type="text/javascript"></script>
+        <!-- Firebase Authentification -->
+        <script src="services/authentification.js" type="text/javascript"></script>
+        <!-- Fonctions utiles en Angular : Formatage, heure -->
+        <script src="services/util.js" type="text/javascript"></script>
+
+        <!-- Gestion du menu -->
+        <script src="menu.js" type="text/javascript"></script>
+
+        <!-- Controllers pour les pages accessibles à tous -->
+        <script src="pages/accueil/accueil.js" type="text/javascript"></script>
+        <script src="pages_admin/specialites/specialites.js" type="text/javascript"></script>
+        <script src="pages_admin/specialite/specialite.js" type="text/javascript"></script>
+        <script src="pages_admin/restaurants/restaurants.js" type="text/javascript"></script>
+        <script src="pages_admin/restaurant/restaurant.js" type="text/javascript"></script>
+        <script src="pages_admin/tests/restaurants.js" type="text/javascript"></script>
+        <script src="pages_admin/test/restaurant.js" type="text/javascript"></script>
+        
+        
+        <script>
+                            $(document).ready(function () {
+                                
+                            });
+
+        </script>
+    </body>
+</html>

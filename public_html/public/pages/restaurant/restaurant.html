@@ -1,0 +1,443 @@
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ENEDIART</title>
+        <style>
+            .box_muanza{
+                border : 0px solid rgba(20,20,20, 0.5); 
+                display: none;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .color_muanza{
+                color : rgba(190,190,190, 1); 
+            }
+
+            #nom_utilisateur{
+                color : rgba(190,190,190, 1) !important;
+            }
+
+            .hauteur{
+                height: 45vh;
+                max-height: 50vw;
+            }
+
+            .tr:hover{
+                background-color: #ddd;
+            }
+            .miniature img:hover{
+                transform: scale(0.95);
+            }
+
+            .supprimer:hover{
+                color:#000!important;
+            }
+
+            .nom_restaurant:hover{
+                font-weight: bold;
+            }
+
+            .titre_accueil{
+                font-size: 4em; 
+            }
+            .padding_bloc{
+                padding: 5vmin; 
+                padding-left: 10vmin;
+                padding-right: 5vmin;
+                padding-bottom: 2vmin;
+            }
+            .paddBloc{
+                padding-bottom: 0px; 
+                padding-top: 40px;
+            }
+            .inlineBlock{
+                display: inline-block;
+            }
+
+            .paddingTopForMobile {
+                padding: 10px; 
+                padding-left: 20px; 
+                padding-top: 20px;
+            }
+
+            @media only screen and (max-width: 500px) {
+
+                .titre_accueil{
+                    font-size: 2.2em; 
+                }
+
+                .padding_bloc{
+                    padding: 5vmin; 
+                    padding-left: 10vmin;
+                    padding-bottom: 2vmin;
+
+                }
+                .paddBloc{
+                    padding-bottom: 10px; 
+                    padding-top: 40px;
+                }
+                .paddingTopForMobile {
+                    padding: 10px; 
+                    padding-left: 20px; 
+                    padding-top: 20px;
+                    margin-top: 40px;
+                }
+                .notation_utilisateur {
+                    display: block;
+                }
+
+            }
+
+
+
+
+        </style>
+
+    </head>
+    <body style="background-color: #fff">
+        <div ng-controller="RestaurantController as controller">
+            <div class="paddBloc" style="background-color: #fafafa ;width: 100%;">
+                <div class="row">
+                    <div class="col-lg-6 padding_bloc" style="border-right: 0px solid #eee;">
+                        <h1 class="africa">
+                            <span style="display: none" id="test"></span>
+                            {{controller.restaurant.name ? controller.utf8(controller.restaurant.name) : "Veuillez patienter..."}}
+                        </h1>
+                        <div style="margin-top: -15px; font-size: 1.2em; text-overflow: ellipsis; overflow:hidden;">
+                            {{controller.restaurant.codePostal_ad}},
+                            {{controller.restaurant.rue_ad}}
+                            {{controller.restaurant.numRue_ad}},
+                            {{controller.restaurant.ville_ad}},
+                            {{controller.restaurant.pays_ad}}
+                        </div>
+                        <div style="font-size: 1.2em;">
+                            <b>Tel</b> : {{controller.restaurant.tel}}
+                        </div>
+                        <div style="text-overflow: ellipsis; overflow:hidden;">
+                            <a href="{{controller.restaurant.lien}}" style="color:blue">
+                                {{controller.restaurant.lien=='none' ? 'Aucun lien': controller.restaurant.lien}}   
+                            </a>
+                        </div>
+                        <h4 style="margin-top: 5px;">
+                            <b style="color:orange">
+                                <notation note="controller.note_usr_avg"></notation>
+                            </b>
+                        </h4>
+                        <h6 style="display: none; color: #444; font-weight: 100; font-size: 1.5em; margin-right: 20px">
+                            <span class="inlineBlock">
+                                <i class="fas fa-map-marker-alt" style="color:orange"></i>
+                                <span style="padding-left: 5px; padding-right: 20px;">
+                                    {{controller.restaurant.ville}} -
+                                    {{controller.restaurant.pays}},
+                                    {{controller.restaurant.adresse}}
+                                </span>
+                            </span>
+                            <span class="inlineBlock">
+
+                                <i class="fas fa-phone fa-rotate-90"  style="color:orange"></i>
+                                <span style="padding-left: 5px">{{controller.restaurant.tel}}</span>
+                            </span>
+
+                        </h6>
+                        <h6 style="margin-top: 20px; color: #444; white-space: normal;">
+                            <span class="africa tag" ng-repeat="specialite in controller.restaurant.specialites">
+                                {{specialite.nom}}
+                            </span>
+
+                        </h6>
+
+                    </div>
+                    <div class="col-lg-6 padding_bloc">
+                        <p id="resto_description" style="padding-left: 20px; padding-right: 40px; border-left: 2px solid orange ; font-size: 1.2em; font-weight: 200; margin-top: 20px;">
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 100%; padding: 2vmin 5vmin; padding-left: 7vmin; padding-right: 7vmin">
+
+                <div class="row">
+                    <div class="col-12" style="border-right: 0px solid #eee; overflow: hidden; height: 40vh">
+                        <div style="padding-bottom: 17px; box-sizing: content-box; width: 100%; overflow-x: scroll; overflow-y: hidden">
+                            <div style="width: 400vw; height: 40vh;">
+
+                                <div ng-if="controller.restaurant" class="row" style=" padding-bottom: 17px; box-sizing: content-box; margin-top: 5px; margin-bottom: 0px;">
+                                    <div style="margin-top: 20px; " class="col-lg-1">
+                                        <div class="ombre" style="width: 100%; height: 40vh; background-size: cover" ng-style="{'background-image':'url('+controller.getPhoto(controller.restaurant)+')'}">
+
+                                        </div>
+                                    </div>
+                                    <div style="margin-top: 20px; " class="col-lg-1" ng-repeat="photo in controller.photos">
+                                        <div class="" style="width: 100%; height: 40vh; background-size: cover" ng-style="{'background-image':'url('+photo+')'}">
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-lg-8" style="font-size: 1.2em; font-weight: 100; margin-bottom: 40px; ">
+                        <h2 style="margin-top: 30px;">Test de l'équipe</h2>
+                        <div ng-if="!controller.restaurant.test">
+                            <p style="font-size: 1.2em;">
+                                Nous n'avons pas encore testé ce restaurant.
+                                Si vous souhaitez qu'un test soit rédigé au plus tôt. 
+                                Veuillez nous <a href="#!contactus" style="color: orange">contacter</a> !
+                            </p>
+                        </div>
+                        <div ng-repeat="point in controller.restaurant.test.points">
+                            <h4 style="color:#444" class="africa">
+                                {{point.libelle}}
+                                <small style="color:orange; padding-left: 20px;">
+                                    <notation note="point.note"></notation>
+                                </small>
+                            </h4>
+                            <p class="text-justify">
+                                {{point.commentaire}}
+                            </p>
+                        </div>
+
+                        <h2 class="africa" style="font-weight: 100; margin-top: 20px;">
+                            Commentaires
+                        </h2>
+
+                        <div ng-if="controller.notations.length === 0">
+                            <p>
+                                Aucune note n'été attribuée à ce restaurant 
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 10px;">
+                            <div ng-repeat="notation in controller.notations" style="background-color: #fafafa; margin-bottom: 20px; border-left: 2px solid gray; padding:10px; padding-left: 20px;">
+                                <div class="row">
+                                    <div class="col-2" style="padding:5px;">
+                                        <img style="width: 100%; opacity: 0.5" src="resources/img/user.png" alt=""/>
+                                    </div>
+                                    <div class="col-10">
+                                        <div>
+                                            <h5>
+                                                {{notation.pseudo}}
+                                                <small style="float: right; margin-right: 20px;">
+                                                    <notation note="notation.note" style="color:orange;"></notation>
+                                                </small>
+                                            </h5>
+                                        </div>
+                                        <div class="mb-1" style="margin-bottom: 15px; margin-top: -1px">
+                                            {{controller.utf82(notation.comment)}}
+                                        </div>
+                                        <div class="row" style="padding-left: 15px; padding-top: 10px; padding-bottom: 10px;">
+                                            <div style="display: inline-block">
+                                                <small class="text-muted">
+                                                    <small style="padding-right: 20px;">
+                                                        Prestation<br>
+                                                        <notation note="notation.note_cat1"></notation>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                            <div style="display: inline-block">
+                                                <small class="text-muted">
+                                                    <small style="padding-right: 20px;">
+                                                        Accueil<br>
+                                                        <notation note="notation.note_cat2"></notation>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                            <div style="display: inline-block">
+                                                <small class="text-muted">
+                                                    <small style="padding-right: 20px;">
+                                                        Propreté<br>
+                                                        <notation note="notation.note_cat3"></notation>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                            <div style="display: inline-block">
+                                                <small class="text-muted">
+                                                    <small style="padding-right: 20px;">
+                                                        Qualité/Prix<br>
+                                                        <notation note="notation.note_cat4"></notation>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                            <div style="display: inline-block">
+                                                <small class="text-muted">
+                                                    <small style="padding-right: 20px;">
+                                                        Temps d'attente<br>
+                                                        <notation note="notation.note_cat5"=></notation>
+                                                    </small>
+                                                </small>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <small>
+                                                {{notation.date}}
+                                            </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <div class="input-group input-group-lg" style="margin-bottom: 20px;">
+                                        <input 
+                                            ng-click="controller.notation()"
+                                            value="Ajouter un commentaire"
+                                            style="font-weight: bold; padding-top: 5px; border-color: #eee; border-width: 3px; background-color: #eee; color: #444" 
+                                            type="submit" class="form-control africa">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4" style="font-size: 1.2em; font-weight: 100;  margin-bottom: 40px;">
+                        <div style="padding: 20px; margin-top: 0px; background-color: #fff"> 
+                            <h2 style="">Note des utilisateurs</h2>
+
+                            <div ng-if="controller.notations.length === 0">
+                                <p>
+                                    Aucune note n'été attribuée à ce restaurant 
+                                </p>
+                            </div>
+
+                            <table class="table" style="margin-top : 0px;">
+                                <tbody>
+                                    <tr>
+                                        <td>
+                                            <h4 class="africa" style="color:#444">
+                                                Prestation
+                                            </h4>
+                                        </td>
+                                        <td style="width: 60%;">
+                                            <h4 style="color:orange">
+                                                <notation note="controller.cat1"></notation>
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4 class="africa" style="color:#444">
+                                                Accueil
+                                            </h4>
+                                        </td>
+                                        <td style="width: 60%;">
+                                            <h4 style="color:orange">
+                                                <notation note="controller.cat2"></notation>
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4 class="africa" style="color:#444">
+                                                Propreté
+                                            </h4>
+                                        </td>
+                                        <td style="width: 60%;">
+                                            <h4 style="color:orange">
+                                                <notation note="controller.cat3"></notation>
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4 class="africa" style="color:#444">
+                                                Qualité/Prix
+                                            </h4>
+                                        </td>
+                                        <td style="width: 60%;">
+                                            <h4 style="color:orange">
+                                                <notation note="controller.cat4"></notation>
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <h4 class="africa" style="color:#444">
+                                                Temps d'attente
+                                            </h4>
+                                        </td>
+                                        <td style="width: 60%;">
+                                            <h4 style="color:orange">
+                                                <notation note="controller.cat5"></notation>
+                                            </h4>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <div class="input-group input-group-lg" style="margin-bottom: 20px;">
+                                <input 
+                                    ng-click="controller.notation()"
+                                    value="Noter le restaurant"
+                                    style="font-weight: bold; padding-top: 5px; border-color: #000; border-width: 3px; background-color: rgba(0,0,0,0.95); color: orange" 
+                                    type="submit" class="form-control africa">
+                            </div>
+                        </div>
+                        <div style="margin-top: 20px;">
+
+                            <div ng-if="controller.restaurant.test.plus" class="paddingTopForMobile" style="width: 100%; min-height: 20px; border: 2px solid green; border-radius: 0px;">
+                                <h4 class="africa" style="color:#444">
+                                    Les plus
+                                </h4>
+                                <ul>
+                                    <li style="color:green" ng-repeat="plus in controller.restaurant.test.plus">
+                                        <span style="color:black">
+                                            {{plus}}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div ng-if="controller.restaurant.test.moins" style="margin-top: 20px; padding: 10px; padding-left: 20px; padding-top: 20px; width: 100%; min-height: 20px; border: 2px solid red; border-radius: 0px;">
+                                <h4 class="africa" style="color:#444">
+                                    Les moins
+                                </h4>
+                                <ul>
+                                    <li style="color:red" ng-repeat="moins in controller.restaurant.test.moins">
+                                        <span style="color:black">
+                                            {{moins}}
+                                        </span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+        <script>
+
+            $(document).ready(function () {
+                $("nav").css("background-color", "rgba(0,0,0,0.99)");
+                $("nav").addClass("ombre");
+                window.scrollTo(0, 0);
+                document.addEventListener('scroll', function (event) {
+                    var scroll = $("#vue").scrollTop();
+                    //console.log('scrolling ');
+                    $("nav").css("background-color", "rgba(0,0,0,0.99)");
+
+                    clearTimeout($.data(this, 'scrollTimer'));
+
+                    $.data(this, 'scrollTimer', setTimeout(function () {
+                        $("nav").css("background-color", "rgba(0,0,0,0.99)");
+                        //$("nav").removeClass("ombre");
+                        //console.log("Haven't scrolled in 250ms!");
+                    }, 2000));
+                }, true);
+
+
+
+
+
+            });
+        </script>
+    </body> 
+</html>
+

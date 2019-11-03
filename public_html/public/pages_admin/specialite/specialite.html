@@ -1,0 +1,135 @@
+<html>
+    <head>
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>ENEDIART</title>
+        <style>
+            .box_muanza{
+                border : 0px solid rgba(20,20,20, 0.5); 
+                display: none;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+            .color_muanza{
+                color : rgba(190,190,190, 1); 
+            }
+
+            #nom_utilisateur{
+                color : rgba(190,190,190, 1) !important;
+            }
+
+            .hauteur{
+                height: 45vh;
+                max-height: 50vw;
+            }
+
+            .tr:hover{
+                background-color: #ddd;
+            }
+            .miniature img:hover{
+                transform: scale(0.95);
+            }
+
+            .supprimer:hover{
+                color:#000!important;
+            }
+
+            .nom_specialite:hover{
+                font-weight: bold;
+            }
+
+        </style>
+
+    </head>
+    <body style="background-color: #fff">
+        <div ng-controller="SpecialiteAdminController as controller">
+
+            <div style="width: 100%; padding-top: 80px;">
+                <div class="row">
+                    <div class="col-12" style="border-right: 0px solid #eee; padding: 2vmin 5vmin; padding-left: 7vmin">
+                        <h1 class="africa">
+                            {{controller.specialite.nom ? controller.specialite.nom:"Nouvelle specialité"}}
+                            <span style="width: 20px;">
+                                
+                            </span>
+                            <sup style="color:orange" ng-if="controller.chargement" class="spinner-border" role="status">
+                                <span class="sr-only">Loading...</span>
+                            </sup>
+                        </h1>
+                        <h4 style="color:orange">
+                            {{controller.message}}
+                        </h4>
+                        <div>
+                            <a class="text-info" style="font-size: 1.5em" href="#!specialites">Revenir aux spécialités</a>
+                        </div>
+                        <div class="row" style="margin-top: 20px; margin-bottom: 0px;">
+                            <div class="col-4">
+                                <div class="">
+                                    <img id="logo_competition" class="" alt="" ng-src="{{controller.specialite.photo ? controller.specialite.photo:'resources/img/plat.jpg'}}" style="width: 100%"/>
+                                </div>
+
+                            </div>
+                            <div class="col-4">
+                                <form>
+                                    <div style="margin-top: 0px; margin-bottom: 10px" class="custom-file">
+                                        <input id="input_photo" type="file" accept="image/x-png" class="custom-file-input">
+                                        <label class="custom-file-label" for="inputGroupFile01">Choisir le fichier</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Code</label>
+                                        <input ng-model="controller.specialite.code" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Nom</label>
+                                        <input ng-model="controller.specialite.nom" class="form-control">
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-4">
+                                <div style="padding-bottom: 10px;">
+                                    <button ng-click="controller.enregistrer(controller.specialite)" class="btn btn-primary btn-lg btn-block">
+                                        Enregistrer les informations
+                                    </button>
+                                </div>
+                                <div ng-if="!controller.specialite.isNouveau">
+                                    <button ng-click="controller.supprimer(controller.specialite)" class="btn btn-danger btn-lg btn-block">
+                                        Supprimer la spécialité
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row" style="height: 80px;">
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+
+            $(document).ready(function () {
+
+                window.scrollTo(0, 0);
+
+                $("nav").css("background-color", "#333");
+                $("#basdepage").css("padding-top", "60px");
+                console.log("basde page : " + $("#basdepage").css("padding-top"));
+
+                console.log("accounting");
+
+                console.log("La page oeuvre a été chargée");
+                var nboeuvres = Math.floor(Math.random() * 14) + 1;
+                console.log("nboeuvres" + nboeuvres);
+                $('#hautdepage').hide(500, function () {
+                    //afficherLesBlocAvecElegance(0, nboeuvres);
+                });
+
+
+            });
+        </script>
+    </body> 
+</html>
+

@@ -1,0 +1,4 @@
+<span ng-if="$ctrl.convertirEnNombre($ctrl.note)>0">
+    <i class='fas fa-star' ng-repeat="n in [].constructor($ctrl.convertirEnNombre($ctrl.note)) track by $index"></i>
+</span>
+<i class='far fa-star' ng-repeat="n in [].constructor(5 - $ctrl.convertirEnNombre($ctrl.note)) track by $index"></i>
